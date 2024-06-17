@@ -9,6 +9,12 @@ A toolkit for reading, visualizing the [TAB](https://github.com/kaiopen/tab), a 
 - [PyTorch](https://pytorch.org)
 - [KaiTorch](https://github.com/kaiopen/kaitorch)
 
+### Installation
+Run the following command in the `tab_kit/`:
+```shell
+pip install .
+```
+
 ### Usage
 1. Read the TAB.
 ```python

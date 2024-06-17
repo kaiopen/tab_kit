@@ -9,6 +9,12 @@
 - [PyTorch](https://pytorch.org)
 - [KaiTorch](https://github.com/kaiopen/kaitorch)
 
+### 安装
+在 `tab_kit/` 路径运行以下指令：
+```shell
+pip install .
+```
+
 ### 功能
 1. 读取 TAB
 ```python
