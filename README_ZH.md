@@ -1,22 +1,22 @@
-# The TAB Toolkit
+# 可通行区域边缘数据集工具套件
 
-[中文版](README.md)
+[English](./README.md)
 
-A toolkit for reading, visualizing the [TAB](https://github.com/kaiopen/tab), a travelable area boundary dataset, and evaluating the detectors.
+一个用于读取、可视化 [TAB](https://github.com/kaiopen/tab) 数据以及评估检测模型的工具。
 
-### Python Environment
+### Python 环境
 - Matplotlib
 - [PyTorch](https://pytorch.org)
 - [KaiTorch](https://github.com/kaiopen/kaitorch)
 
-### Installation
-Run the following command in the `tab_kit/`:
+### 安装
+在 `tab_kit/` 路径运行以下指令：
 ```shell
 pip install .
 ```
 
-### Usage
-1. Read the TAB.
+### 功能
+1. 读取 TAB
 ```python
 from kaitorch.pcd import PointCloudXYZIR
 from tab import TAB
@@ -24,29 +24,29 @@ from tab import TAB
 
 tab = TAB('path/to/TAB', 'train')
 
-# Iterate the TAB frame by frame.
+# 逐帧读取数据
 for f in tab:
-    # Read the point cloud.
+    # 读取点云
     pcd: PointCloudXYZIR = tab.get_pcd(f)
 
-    # Clip the point cloud.
-    # It is not needed to do so because the point cloud has already been clipped before.
+    # 裁减点云
+    # 由于数据集提供的点云是裁减过的，所以该步骤非必要
     pcd = TAB.filter_pcd_(pcd)
 
     print(pcd.xyz)
     print(pcd.i)
     print(pcd.r)
 
-    # Read labels.
+    # 读取真值标签
     bounds = tab.get_bound(f)
     for bound in bounds:
         print(bound.keys())
 
 ```
 
-More examples are available.
+更多样例可见。
 
-2. Do visualization.
+2. 可视化 TAB 数据
 ```python
 from tab import BEV, TAB, Visualizer
 
@@ -65,20 +65,20 @@ for f in tqdm(tab):
 
 ```
 
-More examples are available.
+更多样例可见。
 
-3. Do evaluation.
+3. 评估预测结果
 ```python
 from tab import Evaluator
 
 
 evaluator = Evaluator('path/to/TAB', 'test')
 
-# Get prediction results.
+# 获取预测结果
 # preds = ...
 
 print(Evaluator.tabulate(*evaluator(preds)))
 
 ```
 
-The example in detail is [`./test/eval.py`](./test/eval.py). More examples are available.
+详细样例可见[`./test/eval.py`](./test/eval.py)；更多样例可见。
